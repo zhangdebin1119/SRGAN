@@ -33,7 +33,8 @@ x_nearest = tf.image.resize_images(x_small, (28, 28), tf.image.ResizeMethod.NEAR
 y = tf.ones(batch_size, dtype=tf.sg_floatx)
 
 # discriminator labels ( half 1s, half 0s )
-y_disc = tf.concat(0, [y, y * 0])
+#y_disc = tf.concat(0, [y, y * 0])
+y_disc = tf.concat(values=[y, y * 0],axis=0)
 
 #
 # create generator
@@ -56,15 +57,15 @@ tf.sg_summary_image(gen)
 #
 # input image pairs
 #
-x_real_pair = tf.concat(3, [x_nearest, x])
-x_fake_pair = tf.concat(3, [x_nearest, gen])
+x_real_pair = tf.concat(axis=3, values=[x_nearest, x])
+x_fake_pair = tf.concat(axis=3, values=[x_nearest, gen])
 
 #
 # create discriminator & recognizer
 #
 
 # create real + fake image input
-xx = tf.concat(0, [x_real_pair, x_fake_pair])
+xx = tf.concat(axis=0, values=[x_real_pair, x_fake_pair])
 
 with tf.sg_context(name='discriminator', size=4, stride=2, act='leaky_relu'):
     # discriminator part

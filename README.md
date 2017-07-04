@@ -1,3 +1,8 @@
+resources:https://github.com/buriburisuri/SRGAN
+修改了些版本不同的tf代码
+tensorflow:1.1.0
+python:2.7.5
+cpu
 # SRGAN(Super-Resolution Generative Adversarial Network
 A tensorflow implementation of Christian et al's "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network" paper. 
 ( See : [https://arxiv.org/abs/1609.04802](https://arxiv.org/abs/1609.04802) ) 
